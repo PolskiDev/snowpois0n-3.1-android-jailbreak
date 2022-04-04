@@ -11,6 +11,8 @@ import tkinter.ttk as ttk
 from tkinter.constants import *
 
 import snowpois0n
+import os
+import platform
 
 def main(*args):
     '''Main entry point for the application.'''
@@ -24,38 +26,28 @@ def main(*args):
     root.mainloop()
 
 def fastboot(*args):
-    if platform.system() == "Darwin":
-        os.system("./bin/darwin-x86/adb reboot recovery")
-
-    elif platform.system() == "Linux":
-        os.system("./bin/linux-amd64 reboot recovery")
-
-    elif platform.system() == "Windows":
-        os.system("start bin\\win32\\adb.exe reboot recovery")
+    os.system("adb reboot recovery")
 
     sys.stdout.flush()
 
 def jailbreak(*args):
-    if platform.system() == "Darwin":
-        os.system("./bin/darwin-x86/adb install bin/acmarket_4.8.7_27.apk") #&& ./bin/darwin-x86/adb reboot")
 
-    elif platform.system() == "Linux":
-        os.system("./bin/linux-amd64/adb install bin/acmarket_4.8.7_27.apk") #&& ./bin/linux-amd64/adb reboot")
+    if os.name == "nt":
+        os.system("adb install snowpois0n\\F-Droid.apk")
+        os.system("adb install snowpois0n\\acmarket_4.8.7_27.apk") #&& ./bin/linux-amd64/adb reboot")
+    
+    else:
+        os.system("adb install snowpois0n/F-Droid.apk")
+        os.system("adb install snowpois0n/acmarket_4.8.7_27.apk") #&& ./bin/linux-amd64/adb reboot")
 
-    elif platform.system() == "Windows":
-        os.system("start bin\\win32\\adb.exe install bin\\acmarket_4.8.7_27.apk")
+    if __name__ == "__main__":
+        os.system("adb install F-Droid.apk")
+        os.system("adb install acmarket_4.8.7_27.apk") #&& ./bin/linux-amd64/adb reboot")
 
     sys.stdout.flush()
 
 def reboot_device(*args):
-    if platform.system() == "Darwin":
-        os.system("./bin/darwin-x86/adb reboot")
-
-    elif platform.system() == "Linux":
-        os.system("./bin/linux-amd64 reboot")
-
-    elif platform.system() == "Windows":
-        os.system("start bin\\win32\\adb.exe reboot")
+    os.system("adb reboot")
 
     sys.stdout.flush()
 
